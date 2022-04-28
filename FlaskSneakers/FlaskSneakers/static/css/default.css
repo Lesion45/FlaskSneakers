@@ -1,0 +1,91 @@
+body {
+    color: #212121;
+    font-family: "Inter", sans-serif;
+    background-color: #e7f6ff !important;
+}
+
+.wrapper {
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    max-width: 1080px;
+    margin: 50px auto;
+    padding-bottom: 20px;
+}
+
+/* header classes start */
+.d-flex {
+    display: flex;
+}
+.align-items-center {
+    align-items: center;
+}
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.header {
+    padding: 20px 0;
+    margin: auto;
+    border-bottom: 1px solid #eaeaea;
+    max-width: 1080px;
+}
+
+.header-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.header-logo {
+}
+
+.header-total-bill-text {
+    font-weight: 700;
+    color: #5c5c5c;
+}
+
+.header-nav a {
+    margin-left: 30px;
+}
+/* header classes end */
+
+/* default classes start */
+h2 {
+    font-weight: 700;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.col {
+    width: 33.33333%;
+    padding: 0 15px;
+}
+
+/* Default classes end */

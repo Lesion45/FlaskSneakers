@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("nullstyle.css");
+@import url("default.css");
+
+/* carousel classes start */
+
+.carousel {
+    margin: auto;
+    padding: 15px 15px;
+}
+.carousel-item {
+    max-width: 1000px;
+    max-height: 300px;
+}
+.carousel-item img {
+    max-width: auto;
+}
+
+/* carousel classes end */
+
+/* market classes start */
+
+.market-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+    padding-bottom: 10px;
+}
+
+.market-lots {
+    padding-top: 5px;
+}
+
+.market-nav-text {
+    font-weight: 700;
+    font-size: calc(15px + (9 + 9 * 0.7) * ((100vw - 320px) / 1250));
+    color: black;
+}
+
+.market-lot {
+    display: block;
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 210px;
+    max-height: 260px;
+    margin-bottom: 20px;
+    transition: 0.3s linear;
+}
+
+.lot-image {
+    margin: auto;
+    max-width: 133px;
+    max-height: 112px;
+    border-radius: 15px;
+}
+
+.market-lot .lot-image {
+    display: block;
+}
+
+.lot-name {
+    font-weight: 400;
+    font-size: 16px;
+    color: black;
+}
+
+.price-info span {
+    font-weight: 500;
+    font-size: 14px;
+    color: #bdbdbd;
+}
+
+.price-info p {
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+}
+/* market classes end */
+
+.market-lot:hover {
+    background-color: #0000000d;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
