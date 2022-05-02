@@ -2,33 +2,24 @@ from fileinput import filename
 import os
 import secrets
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, jsonify
 from FlaskSneakers import app, db, bcrypt
 from FlaskSneakers.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from FlaskSneakers.models import User, Post
+from FlaskSneakers.models import User, Item
 from flask_login import login_user, current_user, logout_user, login_required
 
 
-posts = [
-    {
-        'author': 'Corey Schafer',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'April 20, 2018'
-    },
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 2',
-        'content': 'Second post content',
-        'date_posted': 'April 21, 2018'
-    }
-]
-
-
 @app.route("/")
-@app.route("/index")
+@app.route("/index", methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    items = db.session.query(Item).all()
+    if request.method == "POST":
+         return render_template('cart.html')
+    return render_template('index.html', items=items)
+
+@app.route("/cart", methods=['GET', 'POST'])
+def cart():
+    return render_template('cart.html')
 
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
@@ -98,3 +89,12 @@ def profile():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route('/api', methods=['GET'])
+def get_lots():
+    response = {}
+    for item in db.session.query(Item).all():
+        response[item.id] = [{'item-description': item.title,
+                              'item-cost': item.cost}]
+    return jsonify({'response': response})

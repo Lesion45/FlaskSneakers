@@ -18,12 +18,12 @@
                     </a>
                 </div>
                 <div class="header-nav d-flex">
-                    <a href="#">
+                    <a href="/cart">
                         <img src="{{url_for('static', filename='img/header-items/cart.png')}}" alt="shopping_cart">
                     </a>
-                    <a href="#">
+                    <!-- <a href="#">
                         <img src="{{url_for('static', filename='img/header-items/fav-items.png')}}" alt="">
-                    </a>
+                    </a> -->
                     {% if current_user.is_authenticated %}
                     <a href="/profile">
                         <img class="profile-img" src="{{url_for('static', filename='img/header-items/abobus.png')}}"

@@ -17,7 +17,7 @@
 <body>
     {% extends "header.html" %}
     {% block content %}
-    <div class="carousel d-flex align-items-center">
+    <div class="carousel align-items-center">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -29,15 +29,15 @@
             </div>
             <div class="carousel-inner">
                 <a href="#" class="carousel-item active">
-                    <img src="{{url_for('static', filename='/img/carousel-items/berries.jpg')}}" class="d-block w-100"
+                    <img src="{{url_for('static', filename='/img/carousel-items/item1.png')}}" class="d-block w-100"
                         alt="...">
                 </a>
                 <a href="#" class="carousel-item ">
-                    <img src="{{url_for('static', filename='/img/carousel-items/ice.jpg')}}" class="d-block w-100"
+                    <img src="{{url_for('static', filename='/img/carousel-items/item2.png')}}" class="d-block w-100"
                         alt="...">
                 </a>
                 <a href="#" class="carousel-item ">
-                    <img src="{{url_for('static', filename='/img/carousel-items/birds.jpg')}}" class="d-block w-100"
+                    <img src="{{url_for('static', filename='/img/carousel-items/item3.png')}}" class="d-block w-100"
                         alt="...">
                 </a>
             </div>
@@ -61,108 +61,26 @@
         </div>
         <div class="market-lots">
             <div class="row d-flex flex-wrap">
+              {% for item in items %}
                 <div class="col">
                     <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot1.png" alt="lot-image">
-                        <p class="lot-name text-center">Мужские Кроссовки Nike Blazer Mid Suede</p>
+                        <img class="lot-image" src="{{url_for('static', filename=item.image)}}" alt="lot-image">
+                        <p class="lot-name text-center">{{item.title}}</p>
                         <div class="d-flex justify-content-between">
                             <div class="price-info d-flex flex-column">
                                 <span class="text-uppercase">Цена:</span>
-                                <p>12 999 руб.</p>
+                                <p>{{item.cost}} руб.</p>
+                            </div>
+                            <div class="lot-btn">
+                                <button type="button" class="btn btn-secondary" id=item.id>+</button>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col">
-                    <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot2.png" alt="lot-image">
-                        <p class="lot-name text-center">Мужские Кроссовки Nike Air Max 270</p>
-                        <div class="d-flex justify-content-between">
-                            <div class="price-info d-flex flex-column">
-                                <span class="text-uppercase">Цена:</span>
-                                <p>12 999 руб.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot3.png" alt="lot-image">
-                        <p class="lot-name text-center">Мужские Кроссовки Nike Blazer Mid Suede</p>
-                        <div class="d-flex justify-content-between">
-                            <div class="price-info d-flex flex-column">
-                                <span class="text-uppercase">Цена:</span>
-                                <p>8 499 руб.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot4.png" alt="lot-image">
-                        <p class="lot-name text-center">Кроссовки Puma X Aka Boku Future Rider</p>
-                        <div class="d-flex justify-content-between">
-                            <div class="price-info d-flex flex-column">
-                                <span class="text-uppercase">Цена:</span>
-                                <p>8 999 руб.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row d-flex flex-wrap">
-                <div class="col">
-                    <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot5.png" alt="lot-image">
-                        <p class="lot-name text-center">Мужские Кроссовки Under Armour Curry 8</p>
-                        <div class="d-flex justify-content-between">
-                            <div class="price-info d-flex flex-column">
-                                <span class="text-uppercase">Цена:</span>
-                                <p>15 199 руб.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot6.png" alt="lot-image">
-                        <p class="lot-name text-center">Мужские Кроссовки Nike Kyrie 7</p>
-                        <div class="d-flex justify-content-between">
-                            <div class="price-info d-flex flex-column">
-                                <span class="text-uppercase">Цена:</span>
-                                <p>11 199 руб.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot7.png" alt="lot-image">
-                        <p class="lot-name text-center">Мужские Кроссовки Jordan Air Jordan 11</p>
-                        <div class="d-flex justify-content-between">
-                            <div class="price-info d-flex flex-column">
-                                <span class="text-uppercase">Цена:</span>
-                                <p>10 799 руб.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="market-lot">
-                        <img class="lot-image" src="../img/market-lots/lot8.png" alt="lot-image">
-                        <p class="lot-name text-center">Мужские Кроссовки Nike LeBron XVIII</p>
-                        <div class="d-flex justify-content-between">
-                            <div class="price-info d-flex flex-column">
-                                <span class="text-uppercase">Цена:</span>
-                                <p>16 499 руб.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+              {% endfor %}
             </div>
         </div>
         {% endblock %}
-
     </div>
 </body>
 
