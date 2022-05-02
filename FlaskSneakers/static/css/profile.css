@@ -7,11 +7,56 @@
 }
 .name {
     font-size: 34px;
-    margin: 40px 0;
+    margin: 40px 0 10px;
 }
 .image {
     margin: 40px 0 0;
     border-radius: 50%;
     width: 400px;
     aspect-ratio: 1;
+}
+.logout {
+    font-size: 20px;
+}
+.logout:hover {
+    display: inline-block;
+    text-decoration: underline;
+    text-shadow: 0 0 3px #0000ff80;
+}
+h2 {
+    font-size: 28px;
+    margin: 30px 0 0;
+}
+.other-info {
+    font-size: 24px;
+    padding: 0px 100px;
+    margin: 0 0 20px;
+}
+.edit-header {
+    margin: 0 0 30px;
+}
+.other-info p {
+    margin: 15px 0;
+    display: inline-block;
+}
+
+h3 {
+    display: inline-block;
+}
+.update {
+    width: 150px;
+    height: 44px;
+    font-size: 22px;
+    border: 1px solid #000;
+    margin: 20px 0;
+}
+.update:hover {
+    background-color: rgb(200, 200, 200);
+    cursor: pointer;
+}
+.update:active {
+    box-shadow: 0 0 3px #ff0000;
+}
+.form-group {
+    font-size: 22px;
 }

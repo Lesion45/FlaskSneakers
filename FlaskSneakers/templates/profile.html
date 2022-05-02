@@ -13,8 +13,60 @@
     {% extends "header.html" %}
     {% block content %}
     <div class="profile">
-        <img src="../img/default_image.jpg" alt="" class="image">
-        <div class="name">name</div>
+        <h2>Account info</h2>
+        <img src="{{ image_file }}" alt="profile_image" class="image">
+        <div class="name">{{current_user.username}}</div>
+        <div class="other-info">
+            <h3>email:</h3>
+            <p class="email">{{current_user.email}}</p>
+        </div>
+        <div class="editing">
+            <h2 class="edit-header">Edit account info</h2>
+
+            <form method="POST" action="" enctype="multipart/form-data" class="form-group">
+                <div class="edit-username">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                    {{ form.username(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.username(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="edit-email">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.email(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="edit-image">
+                    {{ form.picture.label() }}
+                    {{ form.picture(class="form-control-file") }}
+                    {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                    <span class="text-danger">{{ error }}</span></br>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="update") }}
+                </div>
+            </form>
+        </div>
+
+        <a href="logout" class="logout">Logout</a>
     </div>
     {% endblock %}
 </body>
