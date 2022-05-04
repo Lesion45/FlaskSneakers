@@ -15,7 +15,7 @@ body {
 
 /* header classes start */
 .profile-img {
-    width: 40px;
+    width: 50px;
     aspect-ratio: 1;
     border-radius: 50%;
 }
@@ -95,6 +95,8 @@ h2 {
     padding: 0 15px;
 }
 .invalid-feedback {
-    margin: 10px 0;
+    margin: 15px 0 25px;
+    color: red;
+    font-size: 26px;
 }
 /* Default classes end */

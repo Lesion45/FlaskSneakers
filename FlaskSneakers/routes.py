@@ -55,12 +55,12 @@ def save_image(form_image):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_image.filename)
     image_fn = random_hex + f_ext
-    image_path = url_for('static', filename='img/header-items/')
+    image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static/img/header-items/')
+    if os.path.exists(image_path + current_user.image_file):
+        os.remove(image_path + current_user.image_file)
 
-    output_size = (125, 125)
     img = Image.open(form_image)
-    img.resize(output_size)
-    img.save(image_path)
+    img.save(image_path + image_fn)
 
     return image_fn
 
@@ -80,9 +80,9 @@ def profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-    image_file = url_for('static', filename='img/header-items/' + current_user.image_file)
+    # image_file = url_for('static', filename='img/header-items/' + current_user.image_file)
 
-    return render_template('profile.html', image_file=image_file, form=form)
+    return render_template('profile.html', form=form)
 
 
 @app.route("/logout")

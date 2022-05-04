@@ -11,8 +11,8 @@
 }
 .image {
     margin: 40px 0 0;
-    border-radius: 50%;
-    width: 25%;
+    border-radius: 30%;
+    width: 30%;
     aspect-ratio: 1;
 }
 .logout {
@@ -59,4 +59,8 @@ h3 {
 }
 .form-group {
     font-size: 22px;
+}
+.edit-field {
+    margin: 15px 0;
+    font-size: 24px;
 }
