@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("nullstyle.css");
 @import url("default.css");
+@import url("cart.css");
 
 /* carousel classes start */
 
@@ -24,7 +25,7 @@
     max-width: 1000px;
     margin: auto;
     padding: 30px;
-    max-size: 25%;
+    size: 25%;
     padding-bottom: 10px;
 }
 
@@ -50,6 +51,12 @@
     transition: 0.3s linear;
 }
 
+.col {
+    width: 33.33333%;
+    padding: 0 15px;
+}
+
+
 .lot-image {
     margin: auto;
     max-width: 133px;
@@ -66,10 +73,6 @@
     font-size: 16px;
     color: black;
 }
-
- .btn {
-    background-color: green;
-} 
 
 .price-info span {
     font-weight: 500;
@@ -89,34 +92,3 @@
 }
 
 /* market classes end */
-
-/* cart classes start */
-
-.cart-container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 30px;
-    max-size: 25%;
-    padding-bottom: 10px;
-}
-
-.cart-items {
-    padding-top: 5px;
-}
-
-.cart-nav-text {
-    font-weight: 700;
-    font-size: calc(12px + (9 + 9 * 0.7) * ((100vw - 320px) / 1250));
-    color: black;
-}
-
-.box-image {
-    margin: auto;
-    padding-top: 190px;
-    padding-bottom: 240px;
-}
-
-.box-text {
-
-}
-/* cart classes end */

@@ -23,4 +23,11 @@ class Item(db.Model, SerializerMixin):
     cost = db.Column(db.String)
     image = db.Column(db.String, unique=True, nullable=False)
 
+
+class Market(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    username = db.Column(db.String)
+    cart_items = db.Column(db.String)
+    item_image = db.Column(db.String)
+
 db.create_all()

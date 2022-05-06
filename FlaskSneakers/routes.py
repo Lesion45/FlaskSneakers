@@ -5,21 +5,54 @@ from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, jsonify
 from FlaskSneakers import app, db, bcrypt
 from FlaskSneakers.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from FlaskSneakers.models import User, Item
+from FlaskSneakers.models import User, Item, Market
 from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route("/")
-@app.route("/index", methods=['GET', 'POST'])
+@app.route("/index", methods=['get', 'post', 'GET', 'POST'])
 def index():
     items = db.session.query(Item).all()
-    if request.method == "POST":
-         return render_template('cart.html')
+    if request.method == 'POST':
+        if current_user.is_authenticated:
+            id = tuple(request.form.keys())[0]
+            if len(db.session.query(Market).filter(Market.username.like(current_user.username)).all()) == 0:
+                db.session.add(Market(username=current_user.username, cart_items=id, item_image=f'img/market-lots/lot{id}.png')) 
+                db.session.commit()
+            else:
+                cart = db.session.query(Market).filter(Market.username.like(current_user.username)).first()
+                cart.cart_items = cart.cart_items + ',' + id
+                db.session.commit()
+        else:
+            return redirect(url_for('login'))
+
     return render_template('index.html', items=items)
 
-@app.route("/cart", methods=['GET', 'POST'])
+
+@app.route("/cart", methods=['get', 'post', 'GET', 'POST'])
 def cart():
-    return render_template('cart.html')
+    if current_user.is_authenticated:
+        if request.method == 'POST':
+            id = tuple(request.form.keys())[0]
+            if id in '1234567890':
+                item = db.session.query(Market).filter(Market.username.like(current_user.username)).first()
+                new_item = item.cart_items.split(',')
+                print(new_item)
+                new_item.remove(id)
+                item.cart_items = ','.join(new_item)
+                db.session.commit()
+            if id == 'offer':
+                db.session.query(Market).filter(Market.username.like(current_user.username)).delete(synchronize_session=False)
+                db.session.commit()
+                return render_template('cart.html', flag=True)
+        items = db.session.query(Market).filter(Market.username.like(current_user.username)).first()
+        if items:
+            ids = items.cart_items.split(',')
+            items = db.session.query(Item).filter(Item.id.in_(ids)).all()
+        return render_template('cart.html', flag=False, items=items)
+    else:
+        return redirect(url_for('login'))
+
 
 @app.route("/registration", methods=['GET', 'POST'])
 def registration():
