@@ -37,7 +37,6 @@ def cart():
             if id in '1234567890':
                 item = db.session.query(Market).filter(Market.username.like(current_user.username)).first()
                 new_item = item.cart_items.split(',')
-                print(new_item)
                 new_item.remove(id)
                 item.cart_items = ','.join(new_item)
                 db.session.commit()
@@ -48,8 +47,13 @@ def cart():
         items = db.session.query(Market).filter(Market.username.like(current_user.username)).first()
         if items:
             ids = items.cart_items.split(',')
+            if ids[0] == '': ids = ids[1::]
             items = db.session.query(Item).filter(Item.id.in_(ids)).all()
-        return render_template('cart.html', flag=False, items=items)
+            temp = list(set(ids))
+            count_cart_items = []
+            for itm in sorted(temp):
+                count_cart_items.append(ids.count(itm))
+        return render_template('cart.html', flag=False, items=items, count_cart_items=count_cart_items)
     else:
         return redirect(url_for('login'))
 

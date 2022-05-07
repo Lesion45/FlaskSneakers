@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="cart-item">
                     <img class="lot-image" src="{{url_for('static', filename=item.image)}}" alt="lot-image">
-                    <p class="lot-name">{{item.title}}</p>
+                    <p class="lot-name">{{item.title}} x{{count_cart_items[items.index(item)]}}</p>
                     <div class="price-info">
                         <span class="text-uppercase">Цена:</span>
                         <p>{{item.cost}} руб.</p>
