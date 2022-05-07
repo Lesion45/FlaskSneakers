@@ -9,6 +9,7 @@ body {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
     border-radius: 20px;
     max-width: 1080px;
+    min-width: 200px;
     margin: 50px auto;
     padding-bottom: 20px;
 }
@@ -34,7 +35,6 @@ body {
 .justify-content-stretch {
     justify-content: stretch;
 }
-
 
 .header {
     padding: 20px 0;
@@ -94,7 +94,6 @@ h2 {
 .text-uppercase {
     text-transform: uppercase;
 }
-
 
 .invalid-feedback {
     margin: 15px 0 25px;
